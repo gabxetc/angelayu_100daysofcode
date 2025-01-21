@@ -26,7 +26,8 @@ size = ""
 pepp = ""
 extra_chee = ""
 
-def take_order(size, pepp, extra_chee):
+
+def main(size, pepp, extra_chee):
 
     ordering_size = True
     ordering_pepp = True
@@ -39,11 +40,19 @@ def take_order(size, pepp, extra_chee):
         if (size == small or size == medium or size == large):
             if size == small:
                 bill += 15    
+                print(f"Your current total is: ${bill}")
             elif size == medium:
                 bill += 20
+                print(f"Your current total is: ${bill}")
             elif size == large:
                 bill += 25
-            ordering_size = False
+                print(f"Your current total is: ${bill}")
+            change_size = input("Would you like to change the pizza size? Y or N: ").upper()
+            if (change_size == no):
+                ordering_size = False
+            else:
+                bill = 0
+                continue
         else:
             print("Enter a correct value")
 
@@ -52,25 +61,56 @@ def take_order(size, pepp, extra_chee):
         if (pepp == yes or pepp == no):
             if pepp == yes and size == small:
                 bill += 2
+                print(f"Your current total is: ${bill}")
+                remove_pepp = input(f"You have pepperoni on your {size} pizza. Would you like to remove it? Y or N: ").upper()
+                if (remove_pepp == yes):
+                    bill -= 2
+                    print("You have removed pepperoni from your pizza.")
+                    ordering_pepp = False
+                else: 
+                    ordering_pepp = False
+                    
             elif pepp == yes and (size == medium or size == large):
                 bill += 3
-            ordering_pepp = False
+                print(f"Your current total is: ${bill}")
+                remove_pepp = input(f"You have pepperoni on your {size} pizza. Would you like to remove it? Y or N: ").upper()
+                if (remove_pepp == yes):
+                    bill -= 3
+                    pepp = no
+                    print(f"You have removed pepperoni from your {size} pizza. Shame, you're probably vegeterian.")
+                    ordering_pepp = False
+                else:
+                    ordering_pepp = False
+            else:
+                ordering_pepp = False
         else:
             print("Enter a correct value")
 
     while ordering_chee:
-        extra_chee = input("Do you want extra chee? Lactose intolerate ass. Y or N: ").upper()
+        extra_chee = input("Do you want extra chee? Y or N: ").upper()
         if (extra_chee == yes or extra_chee == no):
             if extra_chee == yes:
                 bill += 1
+                chee_check = input(f"You have extra chee on your {size} pizza. Would you like to remove it? Y or N: ").upper()
+                if (chee_check == yes):
+                    bill -= 1
+                    extra_chee = no
+                    print(f"Okay, you've removed chee from you {size} pizza. Shame, you're probably lactose intolerant.")
+                    ordering_chee = False
+                else:
+                    ordering_chee = False
             ordering_chee = False
         else:
             print("Enter a correct value")
 
-    return print("Your final bill is: $" + str(bill) + ".")
+    final_order = input(f"This is your order:\nPizza Size: {size}\nPepperoni: {pepp}\nExtra chee: {extra_chee}\nAre you happy? Y or N: ").upper()
+    if (final_order == yes):
+        print("Your final bill is: $" + str(bill) + ".")
+    else:
+        main(size, pepp, extra_chee)
 
 if __name__ == "__main__":
-    take_order(size, pepp, extra_chee)
+    main(size, pepp, extra_chee)
 
 # Feedback:
 
@@ -82,5 +122,7 @@ if __name__ == "__main__":
 
 # Modifications:
 
-# I want to be able to repeat asking the question if they enter an incorrect value
-# i want to be able to remove or minus amounts from the total if the client chaanges their mind on an order
+# I want to be able to repeat asking the question if they enter an incorrect value --------------------------------------- Complete
+# i want to be able to remove or minus amounts from the total if the client chaanges their mind on an order -------------- Complete
+# Change top orders from anywhere in the code
+# Have seperate functions for each body of code and task
