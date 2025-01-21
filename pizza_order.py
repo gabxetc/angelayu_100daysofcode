@@ -1,25 +1,4 @@
-yes = "Y"
-no = "N"
-small = "S"
-medium = "M"
-large = "L"
-bill = 0
-
-
-print("Welcome to Python Pizza Deliveries!")
-while bill >= 0:
-    size = input("What size pizza do you want? S, M or L: ").upper()
-    if size != (small or medium or large):
-        print("Enter a correct value")
-        break
-    pepperoni = input("Do you want pepperoni on your pizza? Y or N: ").upper()
-    if pepperoni != (yes or no):
-        print("Enter a correct value")
-        break
-    extra_chee = input("Do you want extra chee? Lactose intolerate ass. Y or N: ").upper()
-    if extra_chee != (yes or no):
-        print("Enter a correct value")
-        break
+# Project Brief
 
 # Small pizza: $15
 # Extra pepp small: + $2
@@ -36,38 +15,62 @@ while bill >= 0:
 
 # todo: work out final amount based on if they want extra chee
 
-    if size == small:
-        bill += 15
-        if pepperoni == yes:
-            bill += 2
-        elif extra_chee == yes:
-            bill += 1
-        else:
-            bill += 0
-        print("Your final bill is: $" + str(bill) + ".")
-        break
+print("Welcome to Python Pizza Deliveries!")
 
-    elif size == medium:
-        bill += 20
-        if pepperoni == yes:
-            bill += 3
-        elif extra_chee == yes:
-            bill += 1
-        else:
-            bill += 0
-        print("Your final bill is: $" + str(bill) + ".")
-        break
+yes = "Y"
+no = "N"
+small = "S"
+medium = "M"
+large = "L"
+size = ""
+pepp = ""
+extra_chee = ""
 
-    elif size == large:
-        bill += 25
-        if pepperoni == yes:
-            bill += 3
-        elif extra_chee == yes:
-            bill += 1
+def take_order(size, pepp, extra_chee):
+
+    ordering_size = True
+    ordering_pepp = True
+    ordering_chee = True
+
+    bill = 0
+
+    while ordering_size:
+        size = input("What size pizza do you want? S, M or L: ").upper()
+        if (size == small or size == medium or size == large):
+            if size == small:
+                bill += 15    
+            elif size == medium:
+                bill += 20
+            elif size == large:
+                bill += 25
+            ordering_size = False
         else:
-            bill += 0
-        print("Your final bill is: $" + str(bill) + ".")
-        break
+            print("Enter a correct value")
+
+    while ordering_pepp:
+        pepp = input("Do you want pepperoni on your pizza? Y or N: ").upper()
+        if (pepp == yes or pepp == no):
+            if pepp == yes and size == small:
+                bill += 2
+            elif pepp == yes and (size == medium or size == large):
+                bill += 3
+            ordering_pepp = False
+        else:
+            print("Enter a correct value")
+
+    while ordering_chee:
+        extra_chee = input("Do you want extra chee? Lactose intolerate ass. Y or N: ").upper()
+        if (extra_chee == yes or extra_chee == no):
+            if extra_chee == yes:
+                bill += 1
+            ordering_chee = False
+        else:
+            print("Enter a correct value")
+
+    return print("Your final bill is: $" + str(bill) + ".")
+
+if __name__ == "__main__":
+    take_order(size, pepp, extra_chee)
 
 # Feedback:
 
