@@ -25,15 +25,15 @@ large = "L"
 size = ""
 pepp = ""
 extra_chee = ""
+bill = 0
 
+def main():
+    pizza_size(size, bill)
+    pepp_topping(pepp, bill)
+    chee_extra_topping(extra_chee, bill)
 
-def main(size, pepp, extra_chee):
-
+def pizza_size(size, bill):
     ordering_size = True
-    ordering_pepp = True
-    ordering_chee = True
-
-    bill = 0
 
     while ordering_size:
         size = input("What size pizza do you want? S, M or L: ").upper()
@@ -55,6 +55,11 @@ def main(size, pepp, extra_chee):
                 continue
         else:
             print("Enter a correct value")
+            
+    return bill
+
+def pepp_topping(pepp, bill):
+    ordering_pepp = True
 
     while ordering_pepp:
         pepp = input("Do you want pepperoni on your pizza? Y or N: ").upper()
@@ -86,6 +91,9 @@ def main(size, pepp, extra_chee):
         else:
             print("Enter a correct value")
 
+def chee_extra_topping(extra_chee, bill):
+    ordering_chee = True
+
     while ordering_chee:
         extra_chee = input("Do you want extra chee? Y or N: ").upper()
         if (extra_chee == yes or extra_chee == no):
@@ -103,14 +111,15 @@ def main(size, pepp, extra_chee):
         else:
             print("Enter a correct value")
 
+def complete_order(bill, extra_chee, size, pepp):
     final_order = input(f"This is your order:\nPizza Size: {size}\nPepperoni: {pepp}\nExtra chee: {extra_chee}\nAre you happy? Y or N: ").upper()
     if (final_order == yes):
         print("Your final bill is: $" + str(bill) + ".")
     else:
-        main(size, pepp, extra_chee)
+        main()
 
 if __name__ == "__main__":
-    main(size, pepp, extra_chee)
+    main()
 
 # Feedback:
 

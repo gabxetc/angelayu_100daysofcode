@@ -14,3 +14,8 @@ elif (bmi >= 18.5 and bmi < 25):
     
 elif (bmi >= 25):
     print("overweight")
+
+
+# Modifications
+
+# Add an option to enter your weight, height and name
