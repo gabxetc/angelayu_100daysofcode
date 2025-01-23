@@ -11,3 +11,6 @@ All the code from my 100 days of code Udemy course
 3. bill_splitter.py
     Started: 22 Jan 2025
     Description: This project randomly picks a name out of a list of names.
+4. Rock, Paper, Scissors game.
+    Started: 22 Jan 2025
+    Description: This project allows a user to play rock, paper, scissors against a computer
