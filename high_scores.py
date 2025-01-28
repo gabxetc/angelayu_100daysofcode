@@ -31,3 +31,10 @@ for scores in test_scores:
         pass
 
 print(max_num)
+
+count = 0
+
+for i in range(1,101):
+    count += 1
+
+print(count)
