@@ -39,7 +39,7 @@ def shuffel():
     random.shuffle(password_list)
     final = ''.join(str(x) for x in password_list)
 
-    print(final)
+    print(f"Here is your password! {final}")
 
 if __name__ == "__main__":
     shuffel()
